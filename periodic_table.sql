@@ -117,14 +117,14 @@ ALTER TABLE ONLY public.types ALTER COLUMN type_id SET DEFAULT nextval('public.t
 --
 
 INSERT INTO public.elements VALUES (1, 'H', 'Hydrogen');
-INSERT INTO public.elements VALUES (2, 'he', 'Helium');
-INSERT INTO public.elements VALUES (3, 'li', 'Lithium');
+INSERT INTO public.elements VALUES (2, 'He', 'Helium');
+INSERT INTO public.elements VALUES (3, 'Li', 'Lithium');
 INSERT INTO public.elements VALUES (4, 'Be', 'Beryllium');
 INSERT INTO public.elements VALUES (5, 'B', 'Boron');
 INSERT INTO public.elements VALUES (6, 'C', 'Carbon');
 INSERT INTO public.elements VALUES (7, 'N', 'Nitrogen');
 INSERT INTO public.elements VALUES (8, 'O', 'Oxygen');
-INSERT INTO public.elements VALUES (1000, 'mT', 'moTanium');
+INSERT INTO public.elements VALUES (1000, 'Mt', 'moTanium');
 
 
 --
