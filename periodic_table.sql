@@ -72,6 +72,47 @@ CREATE TABLE public.properties (
 ALTER TABLE public.properties OWNER TO freecodecamp;
 
 --
+-- Name: types; Type: TABLE; Schema: public; Owner: freecodecamp
+--
+
+CREATE TABLE public.types (
+    type_id integer NOT NULL,
+    type character varying NOT NULL
+);
+
+
+ALTER TABLE public.types OWNER TO freecodecamp;
+
+--
+-- Name: types_type_id_seq; Type: SEQUENCE; Schema: public; Owner: freecodecamp
+--
+
+CREATE SEQUENCE public.types_type_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.types_type_id_seq OWNER TO freecodecamp;
+
+--
+-- Name: types_type_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: freecodecamp
+--
+
+ALTER SEQUENCE public.types_type_id_seq OWNED BY public.types.type_id;
+
+
+--
+-- Name: types type_id; Type: DEFAULT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.types ALTER COLUMN type_id SET DEFAULT nextval('public.types_type_id_seq'::regclass);
+
+
+--
 -- Data for Name: elements; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
@@ -99,6 +140,22 @@ INSERT INTO public.properties VALUES (6, 'nonmetal', 12.011000, 3550, 4027);
 INSERT INTO public.properties VALUES (7, 'nonmetal', 14.007000, -210.1, -195.8);
 INSERT INTO public.properties VALUES (8, 'nonmetal', 15.999000, -218, -183);
 INSERT INTO public.properties VALUES (1000, 'metalloid', 1.000000, 10, 100);
+
+
+--
+-- Data for Name: types; Type: TABLE DATA; Schema: public; Owner: freecodecamp
+--
+
+INSERT INTO public.types VALUES (1, 'metal');
+INSERT INTO public.types VALUES (2, 'nonmetal');
+INSERT INTO public.types VALUES (3, 'metalloid');
+
+
+--
+-- Name: types_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
+--
+
+SELECT pg_catalog.setval('public.types_type_id_seq', 3, true);
 
 
 --
@@ -131,6 +188,14 @@ ALTER TABLE ONLY public.properties
 
 ALTER TABLE ONLY public.properties
     ADD CONSTRAINT properties_pkey PRIMARY KEY (atomic_number);
+
+
+--
+-- Name: types types_pkey; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.types
+    ADD CONSTRAINT types_pkey PRIMARY KEY (type_id);
 
 
 --
