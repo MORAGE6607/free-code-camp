@@ -49,8 +49,8 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.elements (
     atomic_number integer NOT NULL,
-    symbol character varying(2),
-    name character varying(40)
+    symbol character varying(2) NOT NULL,
+    name character varying(40) NOT NULL
 );
 
 
@@ -64,8 +64,8 @@ CREATE TABLE public.properties (
     atomic_number integer NOT NULL,
     type character varying(30),
     atomic_mass numeric(9,6) NOT NULL,
-    melting_point_celsius numeric,
-    boiling_point_celsius numeric
+    melting_point_celsius numeric NOT NULL,
+    boiling_point_celsius numeric NOT NULL
 );
 
 
@@ -131,6 +131,22 @@ ALTER TABLE ONLY public.properties
 
 ALTER TABLE ONLY public.properties
     ADD CONSTRAINT properties_pkey PRIMARY KEY (atomic_number);
+
+
+--
+-- Name: elements unique_name; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.elements
+    ADD CONSTRAINT unique_name UNIQUE (name);
+
+
+--
+-- Name: elements unique_symbol; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.elements
+    ADD CONSTRAINT unique_symbol UNIQUE (symbol);
 
 
 --
